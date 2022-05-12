@@ -17,8 +17,7 @@ if (root == nullptr) {
   root->value = val;
   root->count = 1;
   root->left = root->right = nullptr;
-}
-else if (root->value < val)
+} else if (root->value < val)
   root->left = addNode(root->left, val);
 else if (root->value > val)
   root->right = addNode(root->right, val);
@@ -43,12 +42,13 @@ if (root == nullptr)
 else {
   left = calc_l(root->left);
   right = calc_l(root->right);
-}
+  }
 if (left > right)
   return ++left;
 else
   return ++right;
 }
+ 
  public:
 BST() :root(nullptr) {}
 void add(const T& val) {

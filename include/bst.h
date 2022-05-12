@@ -17,12 +17,12 @@ if (root == nullptr) {
   root->value = val;
   root->count = 1;
   root->left = root->right = nullptr;
-  } else if (root->value < val) 
+  } else if (root->value < val) {
     root->left = addNode(root->left, val);
-else if (root->value > val) 
-  root->right = addNode(root->right, val);
-else 
-  root->count++;
+  } else if (root->value > val) {
+    root->right = addNode(root->right, val);
+  } else
+    root->count++;
 return root;
 }
 int searchNode(Node* root, const T& val) {
@@ -30,7 +30,7 @@ if (root == nullptr) {
   return 0;
 } else if (root->value == val) {
   return root->count;
-}
+  }
 else if (root->value < val) {
   return searchNode(root->left, val);
 } else {

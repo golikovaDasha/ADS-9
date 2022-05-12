@@ -6,7 +6,7 @@ class BST {
  private:
   struct Node {
   T value;
-  int count=0;
+  int count = 0;
   Node* left = nullptr;
   Node* right = nullptr;
   };
@@ -18,32 +18,22 @@ if (root == nullptr) {
   root->count = 1;
   root->left = root->right = nullptr;
 }
-else if (root->value < val) 
+else if (root->value < val)
   root->left = addNode(root->left, val);
-else if (root->value > val) 
+else if (root->value > val)
   root->right = addNode(root->right, val);
-else 
+else
   root->count++;
 return root;
 }
 int searchNode(Node* root, const T& val) {
-if (root == nullptr) 
+if (root == nullptr)
   return 0;
-else if (root->value == val) 
+else if (root->value == val)
   return root->count;
-else if (root->value < val) 
+else if (root->value < val)
   return searchNode(root->left, val);
-else 
-  return searchNode(root->right, val);
-}
-int searchNode(Node* root, const T& val) {
-if (root == nullptr) 
-  return 0;
-else if (root->value == val) 
-  return root->count;
-else if (root->value < val) 
-  return searchNode(root->left, val);
-else 
+else
   return searchNode(root->right, val);
 }
 int calc_l(Node* root) {
@@ -54,9 +44,9 @@ else {
   left = calc_l(root->left);
   right = calc_l(root->right);
 }
-if (left > right) 
+if (left > right)
   return ++left;
-else 
+else
   return ++right;
 }
  public:

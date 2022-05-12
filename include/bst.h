@@ -8,57 +8,60 @@ class BST {
   T value;
   int count = 0;
   Node* left = nullptr;
-  Node* right = nullptr;
+  Node* right = nullptr;;
   };
 Node* root;
-Node* addNode(Node* root, T& val) {
+Node* addNode(Node* root, const T& val) {
 if (root == nullptr) {
   root = new Node;
   root->value = val;
   root->count = 1;
   root->left = root->right = nullptr;
-} else if (root->value < val)
-  root->left = addNode(root->left, val);
-else if (root->value > val)
+  } else if (root->value < val) 
+    root->left = addNode(root->left, val);
+else if (root->value > val) 
   root->right = addNode(root->right, val);
-else
+else 
   root->count++;
 return root;
 }
 int searchNode(Node* root, const T& val) {
-if (root == nullptr)
+if (root == nullptr) {
   return 0;
-else if (root->value == val)
+} else if (root->value == val) {
   return root->count;
-else if (root->value < val)
+}
+else if (root->value < val) {
   return searchNode(root->left, val);
-else
+} else {
   return searchNode(root->right, val);
 }
+}
 int calc_l(Node* root) {
-int left = 0, right = 0;
-if (root == nullptr)
+  int Left = 0, Right = 0;
+if (root == nullptr) {
   return 0;
-else {
-  left = calc_l(root->left);
-  right = calc_l(root->right);
-  }
-if (left > right)
-  return ++left;
-else
-  return ++right;
+} else {
+  Left = calc_l(root->left);
+  Right = calc_l(root->right);
 }
- 
+if (Right > Left) {
+  return ++Right;
+} else {
+  return ++Left;
+}
+}
+
  public:
-BST() :root(nullptr) {}
-void add(const T& val) {
-  root = addNode(root, val);
-}
-int search(const T& val) {
-  return searchNode(root, val);
-}
-int calc() {
-  return calc_l(root) - 1;
-}
+  BST() :root(nullptr) {}
+  void add(const T& val) {
+    root = addNode(root, val);
+  }
+  int search(const T& val) {
+    return searchNode(root, val);
+  }
+  int calc() {
+    return calc_l(root) - 1;
+  }
 };
 #endif  // INCLUDE_BST_H_

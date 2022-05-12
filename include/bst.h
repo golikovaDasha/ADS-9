@@ -37,13 +37,13 @@ else if (root->value < val) {
   return searchNode(root->right, val);
 }
 }
-int calc_l(Node* root) {
+int depth_l(Node* root) {
   int Left = 0, Right = 0;
 if (root == nullptr) {
   return 0;
 } else {
-  Left = calc_l(root->left);
-  Right = calc_l(root->right);
+  Left = depth_l(root->left);
+  Right = depth_l(root->right);
 }
 if (Right > Left) {
   return ++Right;
@@ -60,8 +60,8 @@ if (Right > Left) {
   int search(const T& val) {
     return searchNode(root, val);
   }
-  int calc() {
-    return calc_l(root) - 1;
+  int depth() {
+    return depth_l(root) - 1;
   }
 };
 #endif  // INCLUDE_BST_H_

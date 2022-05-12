@@ -10,8 +10,7 @@ BST<std::string> makeTree(const char* filename) {
   std::ifstream file(filename);
   std::string simb = "";
   if (!file) {
-    std::cout << "Error!" << std::endl;
-    return;
+    throw std::string("Error! ");
 }
 while (!file.eof()) {
   simb = "";
